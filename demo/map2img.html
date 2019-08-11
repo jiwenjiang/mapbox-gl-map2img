@@ -1,15 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="map2img.js"></script>
-  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.9/mapbox-gl-draw.js'></script>
+  <meta charset='utf-8'/>
+  <title>Display a map</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no'/>
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js'></script>
+  <script src='map2img.min.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css' rel='stylesheet'/>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
-</body>
+
+<div id='map'></div>
 <script>
-  var Draw = new MapboxDraw();
-  console.log(Draw)
+  mapboxgl.accessToken = "pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY2p0MG01MXRqMW45cjQzb2R6b2ptc3J4MSJ9.zA2W0IkI0c6KaAhJfk9bWg";
+  var map = new mapboxgl.Map({
+    container: "map", // container id
+    style: "mapbox://styles/mapbox/streets-v11", // stylesheet location
+    center: [-74.50, 40], // starting position [lng, lat]
+    zoom: 9, // starting zoom
+    preserveDrawingBuffer: true
+  });
+  var html=`<img src="donwload.png" style="width: 30px;height: 30px"/>`
+  var downloadCtrl=new Map2img(html)
+  map.addControl(downloadCtrl, 'top-right');
+//  console.log(111,new Map2img())
 </script>
+
+</body>
 </html>

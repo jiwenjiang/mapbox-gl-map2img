@@ -1,5 +1,5 @@
 {
-  "name": "map2img",
+  "name": "Map2img",
   "version": "1.0.0",
   "description": "Produce universal library with webpack and es6",
   "main": "lib/map2img.min.js",
